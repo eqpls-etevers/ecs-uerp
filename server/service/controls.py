@@ -10,7 +10,8 @@ Equal Plus
 from common import UerpControl
 from driver import Redis, ElasticSearch, PostgreSql
 
-from schema.sample.model import Blog, Message
+from schema.secret.certification import Authority, Server
+from schema.secret.access import OpenSsh
 
 
 #===============================================================================
@@ -29,7 +30,8 @@ class Control(UerpControl):
         )
 
     async def startup(self):
-        await self.registerModel(Blog)
-        await self.registerModel(Message)
+        await self.registerModel(Authority)
+        await self.registerModel(Server)
+        await self.registerModel(OpenSsh)
 
     async def shutdown(self): pass
