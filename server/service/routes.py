@@ -7,8 +7,8 @@ Equal Plus
 #===============================================================================
 # Import
 #===============================================================================
-from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from stringcase import snakecase
+from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from common import getConfig, Logger, MultiTask, AsyncRest
 
 from .controls import Control
