@@ -8,8 +8,11 @@ Equal Plus
 # Import
 #===============================================================================
 from common import UerpControl
-from driver import RedisModel, ElasticSearch, PostgreSql
-from integration.auth_kc_redis import AuthDriver
+
+from driver.auth_kc_redis import AuthKeyCloakRedis
+from driver.redis import RedisModel
+from driver.elasticsearch import ElasticSearch
+from driver.postgresql import PostgreSql
 
 from schema.secret.certification import Authority, Server
 from schema.secret.access import OpenSsh
@@ -20,12 +23,11 @@ from schema.secret.access import OpenSsh
 #===============================================================================
 class Control(UerpControl):
 
-    def __init__(self, api, config):
+    def __init__(self, confPath):
         UerpControl.__init__(
             self,
-            api=api,
-            config=config,
-            authDriver=AuthDriver,
+            confPath=confPath,
+            authDriver=AuthKeyCloakRedis,
             cacheDriver=RedisModel,
             searchDriver=ElasticSearch,
             databaseDriver=PostgreSql
